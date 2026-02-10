@@ -2,10 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-expand-the-in-app-static-dataset-so-the-ui-looks-populated-and-presentable-across-books-topics-question-detail-and-saved-questions-views",
-      "featureTitle": "Expand the in-app static dataset so the UI looks populated and presentable across Books, Topics, Question Detail, and Saved Questions views.",
+      "featureId": "feature-implement-app-wide-light-and-dark-mode-support-using-tailwind-s-class-based-dark-mode-by-toggling-the-dark-class-on-the-document-root-leveraging-the-existing-css-variables-in-frontend-src-index-css",
+      "featureTitle": "Implement app-wide light and dark mode support using Tailwind's class-based dark mode by toggling the `dark` class on the document root, leveraging the existing CSS variables in `frontend/src/index.css`.",
       "files": [
-        "frontend/src/lib/data.ts"
+        "frontend/src/components/AppLayout.tsx",
+        "frontend/src/hooks/useTheme.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -15,16 +16,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-10"
+        "REQ-12"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-fix-the-hints-expansion-ux-so-that-when-the-user-expands-the-hints-section-for-the-first-time-the-first-hint-content-is-revealed-immediately-along-with-the-controls-show-next-hint-show-all-hide-all-rather-than-showing-only-the-buttons-with-no-hint-text",
-      "featureTitle": "Fix the Hints expansion UX so that when the user expands the Hints section for the first time, the first hint content is revealed immediately along with the controls (Show Next Hint / Show All / Hide All), rather than showing only the buttons with no hint text.",
+      "featureId": "feature-add-a-theme-toggle-control-to-the-persistent-header-frontend-src-components-appheader-tsx-that-lets-the-user-switch-between-light-and-dark-themes-with-accessible-labeling-and-keyboard-operability",
+      "featureTitle": "Add a theme toggle control to the persistent header (`frontend/src/components/AppHeader.tsx`) that lets the user switch between Light and Dark themes, with accessible labeling and keyboard operability.",
       "files": [
-        "frontend/src/components/HintsPanel.tsx",
-        "frontend/src/components/QuestionSections.tsx"
+        "frontend/src/components/AppHeader.tsx",
+        "frontend/src/components/ThemeToggle.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -34,7 +35,26 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-11"
+        "REQ-13"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-persist-the-user-s-theme-preference-in-localstorage-and-initialize-the-theme-on-app-load-if-no-preference-is-saved-yet-default-to-the-system-color-scheme-prefers-color-scheme",
+      "featureTitle": "Persist the user's theme preference in localStorage and initialize the theme on app load; if no preference is saved yet, default to the system color scheme (`prefers-color-scheme`).",
+      "files": [
+        "frontend/src/components/AppLayout.tsx",
+        "frontend/src/hooks/useTheme.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
       ],
       "confidence": "high"
     }

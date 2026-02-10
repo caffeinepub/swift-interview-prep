@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Bookmark, BookOpen } from 'lucide-react';
 import { useSavedQuestions } from '@/hooks/useSavedQuestions';
+import { ThemeToggle } from './ThemeToggle';
 import { books } from '@/lib/data';
 
 export function AppHeader() {
@@ -59,24 +60,27 @@ export function AppHeader() {
           )}
         </div>
         
-        <Button
-          variant={isSaved ? "default" : "outline"}
-          size="sm"
-          onClick={() => navigate({ to: '/saved' })}
-          className="relative gap-2 transition-all"
-          aria-label={`Saved questions (${savedCount})`}
-        >
-          <Bookmark className={`h-4 w-4 ${isSaved ? 'fill-current' : ''}`} />
-          <span className="hidden sm:inline">Saved</span>
-          {savedCount > 0 && (
-            <Badge 
-              variant="destructive" 
-              className="absolute -right-1.5 -top-1.5 h-5 min-w-[1.25rem] animate-scale-in px-1 text-xs shadow-md"
-            >
-              {savedCount}
-            </Badge>
-          )}
-        </Button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Button
+            variant={isSaved ? "default" : "outline"}
+            size="sm"
+            onClick={() => navigate({ to: '/saved' })}
+            className="relative gap-2 transition-all"
+            aria-label={`Saved questions (${savedCount})`}
+          >
+            <Bookmark className={`h-4 w-4 ${isSaved ? 'fill-current' : ''}`} />
+            <span className="hidden sm:inline">Saved</span>
+            {savedCount > 0 && (
+              <Badge 
+                variant="destructive" 
+                className="absolute -right-1.5 -top-1.5 h-5 min-w-[1.25rem] animate-scale-in px-1 text-xs shadow-md"
+              >
+                {savedCount}
+              </Badge>
+            )}
+          </Button>
+        </div>
       </div>
     </header>
   );

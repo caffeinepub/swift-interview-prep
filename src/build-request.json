@@ -1,57 +1,85 @@
 {
   "kind": "build_request",
-  "title": "Add richer dummy content and fix hints initial reveal behavior",
+  "title": "Add Light/Dark Mode Theme Toggle",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-10",
-      "text": "Expand the in-app static dataset so the UI looks populated and presentable across Books, Topics, Question Detail, and Saved Questions views.",
+      "id": "REQ-12",
+      "text": "Implement app-wide light and dark mode support using Tailwind's class-based dark mode by toggling the `dark` class on the document root, leveraging the existing CSS variables in `frontend/src/index.css`.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-6"
         ],
         "quotes": [
-          "Please add dummy data so it looks good"
+          "add light and dark mode"
         ]
       },
       "acceptanceCriteria": [
-        "`frontend/src/lib/data.ts` contains enough sample content to make all core screens feel populated (multiple books, multiple sections per book, and multiple topics per section).",
-        "Sample topics include realistic values for `meta`, `description`, and at least some topics include `content`, `hints`, and `solution` so that the Question Detail view shows each section with meaningful content.",
-        "Book summary fields (`sections`, `topics`) match the actual number of sections/topics in the dataset so counts shown on the Books page are accurate.",
-        "No user-facing placeholder text is non-English."
+        "When dark mode is enabled, the `dark` class is applied to `document.documentElement` and dark theme tokens take effect across all pages (Books, Topics, Question Detail, Saved Questions).",
+        "When dark mode is disabled, the `dark` class is not present and light theme tokens take effect across all pages.",
+        "No backend changes are required for theme switching."
       ]
     },
     {
-      "id": "REQ-11",
-      "text": "Fix the Hints expansion UX so that when the user expands the Hints section for the first time, the first hint content is revealed immediately along with the controls (Show Next Hint / Show All / Hide All), rather than showing only the buttons with no hint text.",
+      "id": "REQ-13",
+      "text": "Add a theme toggle control to the persistent header (`frontend/src/components/AppHeader.tsx`) that lets the user switch between Light and Dark themes, with accessible labeling and keyboard operability.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-6"
         ],
         "quotes": [
-          "also for hints when i try to expand first it shows me show next hint, show all etc button but it should show me the hint na and with the buttons to show next hint show all and hide all etc"
+          "add light and dark mode"
         ]
       },
       "acceptanceCriteria": [
-        "When expanding the Hints collapsible (in `frontend/src/components/QuestionSections.tsx`), the first hint is visible immediately without requiring an extra click.",
-        "The controls (Show Next Hint / Show All / Hide All) still function correctly after the change (can reveal more hints, reveal all, and hide all).",
-        "The initial expanded hints state no longer matches the behavior shown in the uploaded screenshot (buttons only, no hint content).",
-        "No regressions: topics with `hints.length === 0` do not render the Hints section (current behavior remains)."
+        "The header includes a clearly discoverable toggle button that switches theme immediately on click/tap.",
+        "The toggle is keyboard accessible and includes an appropriate English `aria-label` that reflects the action/state (e.g., \"Switch to dark mode\" / \"Switch to light mode\").",
+        "The toggle does not break existing header behavior (back navigation, Saved button, saved count badge)."
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Persist the user's theme preference in localStorage and initialize the theme on app load; if no preference is saved yet, default to the system color scheme (`prefers-color-scheme`).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "add light and dark mode"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After selecting a theme, refreshing the page preserves the chosen theme.",
+        "On a fresh browser (no saved preference), the app theme matches the system color scheme.",
+        "Implementation does not require editing any files listed as immutable in SYSTEM_CONTEXT (notably `frontend/src/main.tsx` and Internet Identity hooks)."
       ]
     }
   ],
   "constraints": [
-    "Frontend immutable paths must not be edited: `frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`, `frontend/src/components/ui`.",
-    "Use English for all user-facing text."
+    "Frontend must not modify immutable paths listed in SYSTEM_CONTEXT (including `frontend/src/main.tsx`, `frontend/src/hooks/useInternetIdentity.ts(x)`, and `frontend/src/hooks/useActor.ts`).",
+    "Use the existing Tailwind configuration (`darkMode: ['class']`) and existing theme tokens defined in `frontend/src/index.css`.",
+    "Use English for all user-facing text related to theme toggling."
   ],
   "nonGoals": [
-    "Adding a backend API or persistence layer for books/topics/hints/solutions (dummy content should remain frontend static data).",
-    "Changing authentication or Internet Identity flows."
+    "Do not add new authentication flows or third-party theming libraries.",
+    "Do not add backend persistence for theme preference.",
+    "Do not redesign the overall visual theme beyond what is necessary to support correct light/dark token switching."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

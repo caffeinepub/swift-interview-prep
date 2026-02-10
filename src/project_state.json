@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 7,
+  "projectStateVersion": 9,
   "summary": "Swift Interview Prep website: improve UI/UX to be more user-friendly across books, topics, question detail, and saved questions views.",
   "architectural_notes": [],
   "known_issues": [
     "Hints UI bug: On first expand, controls (show next hint/show all/etc.) appear but the hint content is not shown until later; expected to show hint content immediately with controls."
   ],
-  "isFixRequest": true,
+  "isFixRequest": false,
   "existing_features": [
     {
       "id": "feature-create-and-apply-a-coherent-visual-theme-for-the-swift-interview-prep-app-that-improves-readability-and-visual-hierarchy-across-all-views-books-topics-question-detail-saved-questions-including-consistent-typography-scale-spacing-system-card-button-styles-and-interactive-states-hover-active-focus-disabled-use-english-for-all-user-facing-text",
@@ -95,6 +95,30 @@
         "REQ-11"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-implement-app-wide-light-and-dark-mode-support-using-tailwind-s-class-based-dark-mode-by-toggling-the-dark-class-on-the-document-root-leveraging-the-existing-css-variables-in-frontend-src-index-css",
+      "title": "Implement app-wide light and dark mode support using Tailwind's class-based dark mode by toggling the `dark` class on the document root, leveraging the existing CSS variables in `frontend/src/index.css`.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-theme-toggle-control-to-the-persistent-header-frontend-src-components-appheader-tsx-that-lets-the-user-switch-between-light-and-dark-themes-with-accessible-labeling-and-keyboard-operability",
+      "title": "Add a theme toggle control to the persistent header (`frontend/src/components/AppHeader.tsx`) that lets the user switch between Light and Dark themes, with accessible labeling and keyboard operability.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-persist-the-user-s-theme-preference-in-localstorage-and-initialize-the-theme-on-app-load-if-no-preference-is-saved-yet-default-to-the-system-color-scheme-prefers-color-scheme",
+      "title": "Persist the user's theme preference in localStorage and initialize the theme on app load; if no preference is saved yet, default to the system color scheme (`prefers-color-scheme`).",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -113,6 +137,12 @@
     {
       "id": "AR-3",
       "summary": "Fix hints expand behavior: expanding the first time should reveal the hint content immediately along with controls (next hint/show all/hide all), not show only the buttons first.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add Light Mode and Dark Mode (theme toggle) for the Swift Interview Prep website/app UI.",
       "reqIds": [],
       "status": "pending"
     }

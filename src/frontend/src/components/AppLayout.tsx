@@ -2,8 +2,12 @@ import { Outlet } from '@tanstack/react-router';
 import { AppHeader } from './AppHeader';
 import { Toaster } from '@/components/ui/sonner';
 import { Heart } from 'lucide-react';
+import { useTheme } from '@/hooks/useTheme';
 
 export function AppLayout() {
+  // Initialize theme on app load
+  useTheme();
+  
   const currentYear = new Date().getFullYear();
   const appIdentifier = typeof window !== 'undefined' 
     ? encodeURIComponent(window.location.hostname) 

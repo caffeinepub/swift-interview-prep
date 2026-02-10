@@ -1,7 +1,7 @@
 {
   "frontend/src/App.tsx": "Main application component that sets up TanStack Router with four routes (Books, Topics, Question Detail, Saved Questions) and wraps them in the AppLayout component.",
-  "frontend/src/components/AppLayout.tsx": "Root layout component with header, main content area, and footer containing copyright and caffeine.ai attribution with UTM tracking.",
-  "frontend/src/components/AppHeader.tsx": "Sticky header with contextual back navigation, app logo/title, and saved questions button with animated badge counter.",
+  "frontend/src/components/AppLayout.tsx": "Root layout component with header, main content area, footer, and theme initialization via useTheme hook to ensure theme is applied on app load.",
+  "frontend/src/components/AppHeader.tsx": "Sticky header with contextual back navigation, app logo/title, theme toggle button, and saved questions button with animated badge counter.",
   "frontend/src/pages/BooksPage.tsx": "Landing page with centered hero section, badge accent, and staggered fade-in animations for book cards.",
   "frontend/src/components/BookCard.tsx": "Enhanced book card with gradient icon background, hover animations, chevron indicator, and improved visual hierarchy.",
   "frontend/src/pages/TopicsPage.tsx": "Topics list page with enhanced progress card featuring trophy/target icons, gradient backgrounds, and animated section entries.",
@@ -28,5 +28,7 @@
   "frontend/src/components/ui/tooltip.tsx": "Shadcn tooltip component using Radix UI with provider, trigger, and content for accessible hover/focus hints.",
   "frontend/src/components/ui/sonner.tsx": "Shadcn toast notification component using Sonner library with theme support and consistent styling matching the design system.",
   "frontend/src/hooks/useQueries.ts": "Empty placeholder file for React Query hooks; all state is managed via localStorage hooks since backend has no methods.",
-  "frontend/src/components.json": "Shadcn UI configuration file specifying style preferences, paths, and aliases for component generation and imports."
+  "frontend/src/components.json": "Shadcn UI configuration file specifying style preferences, paths, and aliases for component generation and imports.",
+  "frontend/src/hooks/useTheme.ts": "Custom hook that manages theme state (light/dark), persists preference to localStorage, initializes from system preference on first load, and applies the 'dark' class to document root.",
+  "frontend/src/components/ThemeToggle.tsx": "Reusable theme toggle button component with Sun/Moon icons that switches between light and dark modes with accessible labeling."
 }
