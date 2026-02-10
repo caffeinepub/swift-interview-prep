@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Swift Interview Prep website: improve UI/UX to be more user-friendly across books, topics, question detail, and saved questions views.",
+  "architectural_notes": [],
+  "known_issues": [
+    "Hints UI bug: On first expand, controls (show next hint/show all/etc.) appear but the hint content is not shown until later; expected to show hint content immediately with controls."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-and-apply-a-coherent-visual-theme-for-the-swift-interview-prep-app-that-improves-readability-and-visual-hierarchy-across-all-views-books-topics-question-detail-saved-questions-including-consistent-typography-scale-spacing-system-card-button-styles-and-interactive-states-hover-active-focus-disabled-use-english-for-all-user-facing-text",
+      "title": "Create and apply a coherent visual theme for the Swift Interview Prep app that improves readability and visual hierarchy across all views (Books, Topics, Question Detail, Saved Questions), including consistent typography scale, spacing system, card/button styles, and interactive states (hover/active/focus/disabled). Use English for all user-facing text.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-navigation-usability-across-the-four-views-books-topics-question-detail-saved-questions-by-implementing-a-clear-consistent-navigation-model-a-persistent-header-area-with-a-back-affordance-when-applicable-a-saved-entry-point-with-count-badge-and-breadcrumbs-or-contextual-back-links-that-never-leave-the-user-confused-about-where-they-are",
+      "title": "Improve navigation usability across the four views (Books, Topics, Question Detail, Saved Questions) by implementing a clear, consistent navigation model: a persistent header area with a back affordance when applicable, a Saved entry point with count badge, and breadcrumbs or contextual back links that never leave the user confused about where they are.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-the-books-view-to-be-more-scannable-and-user-friendly-by-improving-card-layout-and-information-density-title-description-section-topic-counts-adding-clearer-click-affordances-and-ensuring-the-layout-degrades-gracefully-to-one-column-on-small-screens",
+      "title": "Enhance the Books view to be more scannable and user-friendly by improving card layout and information density (title, description, section/topic counts), adding clearer click affordances, and ensuring the layout degrades gracefully to one column on small screens.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-the-topics-view-for-faster-progress-comprehension-and-easier-browsing-keep-the-progress-indicator-prominent-and-readable-make-completed-state-more-obvious-without-relying-only-on-color-and-ensure-each-topic-row-has-clear-semantics-and-click-targets",
+      "title": "Improve the Topics view for faster progress comprehension and easier browsing: keep the progress indicator prominent and readable, make completed state more obvious (without relying only on color), and ensure each topic row has clear semantics and click targets.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-the-question-detail-view-readability-and-task-flow-by-1-clarifying-primary-actions-mark-complete-save-2-improving-long-form-content-typography-paragraph-width-line-height-code-blocks-and-3-making-video-hints-and-solution-sections-easier-to-discover-and-interact-with",
+      "title": "Improve the Question Detail view readability and task flow by: (1) clarifying primary actions (mark complete, save), (2) improving long-form content typography (paragraph width, line height, code blocks), and (3) making video, hints, and solution sections easier to discover and interact with.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-the-hints-interaction-ux-by-making-hint-reveal-state-understandable-and-controllable-show-progress-e-g-which-hint-number-is-visible-provide-clear-controls-and-ensure-the-reveal-animation-and-layout-are-consistent-across-devices",
+      "title": "Improve the Hints interaction UX by making hint reveal state understandable and controllable: show progress (e.g., which hint number is visible), provide clear controls, and ensure the reveal animation and layout are consistent across devices.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-the-saved-questions-view-ux-by-enhancing-empty-state-messaging-making-list-items-easier-to-scan-question-title-book-section-metadata-and-making-removal-safer-and-clearer-e-g-confirmation-affordance-or-undo-pattern-while-keeping-interactions-touch-friendly",
+      "title": "Improve the Saved Questions view UX by enhancing empty-state messaging, making list items easier to scan (question title, book/section metadata), and making removal safer and clearer (e.g., confirmation affordance or undo pattern) while keeping interactions touch-friendly.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-accessibility-and-usability-improvements-throughout-the-app-keyboard-navigation-for-all-interactive-elements-visible-focus-indicators-appropriate-aria-attributes-for-collapsibles-and-icon-only-buttons-and-improved-color-contrast-where-needed",
+      "title": "Implement accessibility and usability improvements throughout the app: keyboard navigation for all interactive elements, visible focus indicators, appropriate ARIA attributes for collapsibles and icon-only buttons, and improved color contrast where needed.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-polish-responsiveness-for-mobile-and-tablet-by-improving-spacing-typography-scaling-and-layout-behavior-for-header-lists-and-embedded-content-ensure-no-critical-actions-require-precision-tapping-and-no-horizontal-scrolling-occurs-on-standard-device-widths",
+      "title": "Polish responsiveness for mobile and tablet by improving spacing, typography scaling, and layout behavior for header, lists, and embedded content; ensure no critical actions require precision tapping and no horizontal scrolling occurs on standard device widths.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-expand-the-in-app-static-dataset-so-the-ui-looks-populated-and-presentable-across-books-topics-question-detail-and-saved-questions-views",
+      "title": "Expand the in-app static dataset so the UI looks populated and presentable across Books, Topics, Question Detail, and Saved Questions views.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-hints-expansion-ux-so-that-when-the-user-expands-the-hints-section-for-the-first-time-the-first-hint-content-is-revealed-immediately-along-with-the-controls-show-next-hint-show-all-hide-all-rather-than-showing-only-the-buttons-with-no-hint-text",
+      "title": "Fix the Hints expansion UX so that when the user expands the Hints section for the first time, the first hint content is revealed immediately along with the controls (Show Next Hint / Show All / Hide All), rather than showing only the buttons with no hint text.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Redesign/improve the website UI/UX to be more user-friendly (layout, navigation, visual hierarchy, responsiveness, accessibility).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add dummy/sample data content so the UI looks populated and presentable for preview/demo.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Fix hints expand behavior: expanding the first time should reveal the hint content immediately along with controls (next hint/show all/hide all), not show only the buttons first.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Swift Interview Prep",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,46 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Richer static dataset + improved initial hint reveal UX",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "summary": "Expand the static in-app dataset so all core screens (Books, Topics, Question Detail, Saved Questions) look populated and counts are accurate.",
+      "acceptanceCriteria": [
+        "`frontend/src/lib/data.ts` contains enough sample content to make all core screens feel populated (multiple books, multiple sections per book, and multiple topics per section).",
+        "Sample topics include realistic values for `meta`, `description`, and at least some topics include `content`, `hints`, and `solution` so that the Question Detail view shows each section with meaningful content.",
+        "Book summary fields (`sections`, `topics`) match the actual number of sections/topics in the dataset so counts shown on the Books page are accurate.",
+        "No user-facing placeholder text is non-English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/lib/data.ts",
+          "operation": "modify",
+          "description": "Expand `books` with additional books/sections/topics and richer per-topic fields (`meta`, `description`, plus some `content`, `hints`, `solution`). Ensure `Book.sections` equals `data.length` and `Book.topics` equals total count of topics with IDs across all sections so Books page counts stay accurate. Ensure all visible strings are English."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "When the user expands the Hints section, immediately reveal the first hint along with the hint controls.",
+      "acceptanceCriteria": [
+        "When expanding the Hints collapsible (in `frontend/src/components/QuestionSections.tsx`), the first hint is visible immediately without requiring an extra click.",
+        "The controls (Show Next Hint / Show All / Hide All) still function correctly after the change (can reveal more hints, reveal all, and hide all).",
+        "The initial expanded hints state no longer matches the behavior shown in the uploaded screenshot (buttons only, no hint content).",
+        "No regressions: topics with `hints.length === 0` do not render the Hints section (current behavior remains)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HintsPanel.tsx",
+          "operation": "modify",
+          "description": "Update HintsPanel to support an initial visible hint count (e.g., via a prop like `initialVisibleCount` or equivalent) so the first hint can be shown immediately while preserving Show Next/Show All/Hide All behavior. Verify the shadcn-ui component usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/QuestionSections.tsx",
+          "operation": "modify",
+          "description": "Adjust the Hints collapsible wiring to pass an initial visible hint count when the Hints section is opened (and/or reset the panel on first open) so the first hint renders immediately alongside the controls. Keep the existing guard that does not render the Hints section when `hints.length === 0`. Verify the shadcn-ui component usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}
