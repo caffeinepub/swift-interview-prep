@@ -1,68 +1,23 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add Light/Dark Mode Theme Toggle",
+  "title": "Switch brand palette from purple/blue to green across light and dark themes",
   "requirements": [
     {
-      "id": "REQ-12",
-      "summary": "Enable app-wide Tailwind class-based dark mode by toggling the `dark` class on the document root, using existing theme CSS variables.",
+      "id": "REQ-16",
+      "summary": "Replace purple/blue theme tokens and any hardcoded purple/blue utility colors with a green-based palette for both light and dark modes while preserving contrast/readability.",
       "acceptanceCriteria": [
-        "When dark mode is enabled, the `dark` class is applied to `document.documentElement` and dark theme tokens take effect across all pages (Books, Topics, Question Detail, Saved Questions).",
-        "When dark mode is disabled, the `dark` class is not present and light theme tokens take effect across all pages.",
-        "No backend changes are required for theme switching."
+        "In light mode, primary actions and accents (e.g., buttons, icons using `text-primary`, focus rings using `ring-ring`) appear green-toned rather than purple/blue.",
+        "In dark mode, the primary color and focus ring are also green-toned and remain clearly visible on dark backgrounds.",
+        "The `.gradient-text` utility no longer gradients to a blue color (e.g., no longer uses `to-blue-600`) and instead uses a green-compatible gradient end color.",
+        "No obvious purple/blue brand accents remain in common UI surfaces (header icon background, primary buttons, links/accents, focus styles) unless intentionally kept for non-brand semantic purposes (e.g., destructive/red).",
+        "Typography and contrast remain readable in both themes (no low-contrast green text on green backgrounds)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/useTheme.ts",
-          "operation": "create",
-          "description": "Create a theme manager hook (and/or context) that applies/removes the `dark` class on `document.documentElement` and exposes current theme + a setter for use across the app. Ensure it uses Tailwind's class-based dark mode and relies on existing CSS variables in frontend/src/index.css."
-        },
-        {
-          "path": "frontend/src/components/AppLayout.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Wire the theme manager into the app shell so it runs app-wide (all routed pages) without modifying immutable entry files; ensure the document root class is updated when the theme changes."
-        }
-      ]
-    },
-    {
-      "id": "REQ-13",
-      "summary": "Add an accessible Light/Dark theme toggle control to the persistent header without breaking existing navigation and saved state UI.",
-      "acceptanceCriteria": [
-        "The header includes a clearly discoverable toggle button that switches theme immediately on click/tap.",
-        "The toggle is keyboard accessible and includes an appropriate English `aria-label` that reflects the action/state (e.g., \"Switch to dark mode\" / \"Switch to light mode\").",
-        "The toggle does not break existing header behavior (back navigation, Saved button, saved count badge)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/ThemeToggle.tsx",
-          "operation": "create",
-          "description": "Add a reusable ThemeToggle control that uses the shared theme hook/context to switch between Light and Dark. Use shadcn-ui Button styling for consistency and ensure accessible labeling + keyboard operability. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/AppHeader.tsx",
-          "operation": "modify",
-          "description": "Add the ThemeToggle control into the persistent header UI (alongside existing back navigation and Saved button) and ensure the aria-label text is in English and reflects the current state/action. Keep existing header behavior intact. Verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-14",
-      "summary": "Persist the selected theme in localStorage, initialize on app load, and default to system color scheme when no preference is saved.",
-      "acceptanceCriteria": [
-        "After selecting a theme, refreshing the page preserves the chosen theme.",
-        "On a fresh browser (no saved preference), the app theme matches the system color scheme.",
-        "Implementation does not require editing any files listed as immutable in SYSTEM_CONTEXT (notably `frontend/src/main.tsx` and Internet Identity hooks)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/hooks/useTheme.ts",
-          "operation": "modify",
-          "description": "Add localStorage persistence for the theme preference and initialization logic: on first load, if no stored preference exists, choose the initial theme from `prefers-color-scheme`; otherwise apply the stored theme. Ensure updates write to localStorage and immediately update the `dark` class on `document.documentElement`."
-        },
-        {
-          "path": "frontend/src/components/AppLayout.tsx",
-          "operation": "modify",
-          "description": "Ensure the theme initialization runs on app load via the layout (not via immutable frontend/src/main.tsx), so refreshes preserve the saved theme and first-time users default to system preference across all pages."
+          "description": "Update the HSL design token CSS variables for light and dark mode (notably `--primary`, `--ring`, and related accent/chart tokens currently using purple/blue hues) to a cohesive green-based palette with good contrast, and update the `.gradient-text` utility to remove `to-blue-600` in favor of a green-compatible gradient end color. Use shadcn-ui theming via CSS variables (tokens consumed by Tailwind color mappings) rather than editing any files under `frontend/src/components/ui`. Verify the component's usage instructions before implementing."
         }
       ]
     }

@@ -1,72 +1,37 @@
 {
   "kind": "build_request",
-  "title": "Add Light/Dark Mode Theme Toggle",
+  "title": "Switch site color palette from purple to green (light + dark themes)",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-12",
-      "text": "Implement app-wide light and dark mode support using Tailwind's class-based dark mode by toggling the `dark` class on the document root, leveraging the existing CSS variables in `frontend/src/index.css`.",
+      "id": "REQ-16",
+      "text": "Update the app’s design tokens so the overall brand/primary color theme changes from the current purple/blue palette to a green-based palette across both light and dark mode. This includes updating the CSS variables in `frontend/src/index.css` (e.g., `--primary`, `--ring`, and any other theme tokens currently using purple/blue hues such as chart colors and accents as appropriate), and adjusting any utility classes that hardcode blue/purple colors (e.g., the `.gradient-text` utility currently using `to-blue-600`) so the UI no longer presents as purple/blue and instead reads as green-themed while maintaining good contrast and readability.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-6"
+          "msg-3"
         ],
         "quotes": [
-          "add light and dark mode"
+          "currently we are using purple like color (i think i named it correct but not sure) but i want green color theme for my website"
         ]
       },
       "acceptanceCriteria": [
-        "When dark mode is enabled, the `dark` class is applied to `document.documentElement` and dark theme tokens take effect across all pages (Books, Topics, Question Detail, Saved Questions).",
-        "When dark mode is disabled, the `dark` class is not present and light theme tokens take effect across all pages.",
-        "No backend changes are required for theme switching."
-      ]
-    },
-    {
-      "id": "REQ-13",
-      "text": "Add a theme toggle control to the persistent header (`frontend/src/components/AppHeader.tsx`) that lets the user switch between Light and Dark themes, with accessible labeling and keyboard operability.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-6"
-        ],
-        "quotes": [
-          "add light and dark mode"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The header includes a clearly discoverable toggle button that switches theme immediately on click/tap.",
-        "The toggle is keyboard accessible and includes an appropriate English `aria-label` that reflects the action/state (e.g., \"Switch to dark mode\" / \"Switch to light mode\").",
-        "The toggle does not break existing header behavior (back navigation, Saved button, saved count badge)."
-      ]
-    },
-    {
-      "id": "REQ-14",
-      "text": "Persist the user's theme preference in localStorage and initialize the theme on app load; if no preference is saved yet, default to the system color scheme (`prefers-color-scheme`).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-6"
-        ],
-        "quotes": [
-          "add light and dark mode"
-        ]
-      },
-      "acceptanceCriteria": [
-        "After selecting a theme, refreshing the page preserves the chosen theme.",
-        "On a fresh browser (no saved preference), the app theme matches the system color scheme.",
-        "Implementation does not require editing any files listed as immutable in SYSTEM_CONTEXT (notably `frontend/src/main.tsx` and Internet Identity hooks)."
+        "In light mode, primary actions and accents (e.g., buttons, icons using `text-primary`, focus rings using `ring-ring`) appear green-toned rather than purple/blue.",
+        "In dark mode, the primary color and focus ring are also green-toned and remain clearly visible on dark backgrounds.",
+        "The `.gradient-text` utility no longer gradients to a blue color (e.g., no longer uses `to-blue-600`) and instead uses a green-compatible gradient end color.",
+        "No obvious purple/blue brand accents remain in common UI surfaces (header icon background, primary buttons, links/accents, focus styles) unless intentionally kept for non-brand semantic purposes (e.g., destructive/red).",
+        "Typography and contrast remain readable in both themes (no low-contrast green text on green backgrounds)."
       ]
     }
   ],
   "constraints": [
-    "Frontend must not modify immutable paths listed in SYSTEM_CONTEXT (including `frontend/src/main.tsx`, `frontend/src/hooks/useInternetIdentity.ts(x)`, and `frontend/src/hooks/useActor.ts`).",
-    "Use the existing Tailwind configuration (`darkMode: ['class']`) and existing theme tokens defined in `frontend/src/index.css`.",
-    "Use English for all user-facing text related to theme toggling."
+    "Do not edit files under `frontend/src/components/ui` (read-only UI component sources); achieve the theme change via tokens/CSS variables and composition elsewhere.",
+    "Keep the existing light/dark mode mechanism (Tailwind class-based `dark` mode and theme persistence) intact; only change the palette values and any hardcoded accent utility colors that conflict with the new green theme."
   ],
   "nonGoals": [
-    "Do not add new authentication flows or third-party theming libraries.",
-    "Do not add backend persistence for theme preference.",
-    "Do not redesign the overall visual theme beyond what is necessary to support correct light/dark token switching."
+    "Do not redesign layouts, navigation structure, or add new pages/features.",
+    "Do not change authentication or backend behavior (backend remains unchanged).",
+    "Do not change the light/dark theme toggle behavior or persistence—only the color palette."
   ],
   "imageRequirements": {
     "required": [],
@@ -75,7 +40,9 @@
   "userProfileUpdate": {
     "goalsToAdd": [],
     "goalsToRemove": [],
-    "preferencesToAdd": [],
+    "preferencesToAdd": [
+      "Prefer a green color theme instead of purple for the website branding/accent colors."
+    ],
     "preferencesToRemove": [],
     "miscToAdd": [],
     "miscToRemove": [],

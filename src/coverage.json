@@ -1,52 +1,24 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-10T12:22:42.560Z",
+  "generatedAt": "2026-02-10T12:36:27.825Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
-    "implemented": 3,
+    "total": 1,
+    "implemented": 1,
     "items": [
       {
-        "id": "REQ-12",
-        "summary": "Implement app-wide light and dark mode support using Tailwind's class-based dark mode by toggling the `dark` class on the document root, leveraging the existing CSS variables in `frontend/src/index.css`.",
+        "id": "REQ-16",
+        "summary": "Update the app’s design tokens so the overall brand/primary color theme changes from the current purple/blue palette to a green-based palette across both light and dark mode. This includes updating the CSS variables in `frontend/src/index.css` (e.g., `--primary`, `--ring`, and any other theme tokens currently using purple/blue hues such as chart colors and accents as appropriate), and adjusting any utility classes that hardcode blue/purple colors (e.g., the `.gradient-text` utility currently using `to-blue-600`) so the UI no longer presents as purple/blue and instead reads as green-themed while maintaining good contrast and readability.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/useTheme.ts",
-          "frontend/src/components/AppLayout.tsx"
+          "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/useTheme.ts",
-          "frontend/src/components/AppLayout.tsx"
-        ]
-      },
-      {
-        "id": "REQ-13",
-        "summary": "Add a theme toggle control to the persistent header (`frontend/src/components/AppHeader.tsx`) that lets the user switch between Light and Dark themes, with accessible labeling and keyboard operability.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/ThemeToggle.tsx",
-          "frontend/src/components/AppHeader.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/ThemeToggle.tsx",
-          "frontend/src/components/AppHeader.tsx"
-        ]
-      },
-      {
-        "id": "REQ-14",
-        "summary": "Persist the user's theme preference in localStorage and initialize the theme on app load; if no preference is saved yet, default to the system color scheme (`prefers-color-scheme`).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/hooks/useTheme.ts",
-          "frontend/src/components/AppLayout.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/hooks/useTheme.ts",
-          "frontend/src/components/AppLayout.tsx"
+          "frontend/src/index.css"
         ]
       }
     ]
@@ -56,10 +28,7 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/AppHeader.tsx",
-    "frontend/src/components/AppLayout.tsx",
-    "frontend/src/components/ThemeToggle.tsx",
-    "frontend/src/hooks/useTheme.ts",
+    "frontend/src/index.css",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

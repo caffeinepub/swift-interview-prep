@@ -1,25 +1,51 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-10T12:22:42.557Z",
-  "summary": "Theme toggle and persistence appear implemented via a new useTheme hook (localStorage + prefers-color-scheme) and a header toggle button that applies/removes the `dark` class on `document.documentElement`. No immutable files are shown as modified. One unrelated UX change (HintsPanel initial visibility behavior) appears to be included but was not requested.",
+  "generatedAt": "2026-02-10T12:36:27.822Z",
+  "summary": "REQ-16 appears largely implemented via updated CSS design tokens in frontend/src/index.css (light/dark HSL variables for primary/ring/chart colors) and updating the .gradient-text utility to a green-compatible gradient. However, the diff also introduces several additional global style/utility changes not explicitly requested by the BuildRequest.",
   "missing_requirements": [],
   "hallucinated_features": [
     {
-      "description": "HintsPanel/QuestionSections behavior change to show the first hint immediately when the hints section is opened (new `initialVisibleCount` prop).",
-      "reason": "BuildRequest is solely about light/dark theme support, header toggle, and persistence; it does not request changes to hints UX/visibility logic.",
+      "description": "Added/changed multiple non-palette global style utilities (text hierarchy utilities like .text-page-title/.text-section-title/.text-card-title/.text-meta, card hover utility, generic transition utility, smooth scrolling).",
+      "reason": "BuildRequest scope is to switch the color palette and adjust hardcoded accent colors that conflict with the new theme; it explicitly lists non-goals like redesigning UI/UX. These additional utilities go beyond palette/token updates.",
       "evidence": [
-        "frontend-file-summaries.txt (entries for `frontend/src/components/QuestionSections.tsx` and `frontend/src/components/HintsPanel.tsx`)"
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "description": "Changed focus-visible styling globally (\"Enhanced focus visibility\" applying ring classes and offset to *:focus-visible).",
+      "reason": "Not requested; requirement focuses on making ring color green-toned, not introducing new global focus behavior/styling patterns.",
+      "evidence": [
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "description": "Added custom scrollbar styling via ::-webkit-scrollbar rules.",
+      "reason": "Not requested and unrelated to the palette switch requirement.",
+      "evidence": [
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "description": "Introduced/modified code block copy button positioning styles (.prose pre padding/position, .code-copy-button positioning).",
+      "reason": "Not requested; unrelated to palette migration and could be considered a UI behavior/styling change beyond the stated scope.",
+      "evidence": [
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "description": "Updated repository metadata/summary files (frontend-file-summaries.txt and project_state.json).",
+      "reason": "BuildRequest is about theme palette changes; these metadata/state summary updates are not part of the requested implementation requirements.",
+      "evidence": [
+        "frontend-file-summaries.txt",
+        "project_state.json"
       ]
     }
   ],
-  "confidence": 0.78,
+  "confidence": 0.74,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/components/AppHeader.tsx",
-    "frontend/src/components/AppLayout.tsx",
-    "frontend/src/components/ThemeToggle.tsx",
-    "frontend/src/hooks/useTheme.ts",
+    "frontend/src/index.css",
     "project_state.json"
   ]
 }

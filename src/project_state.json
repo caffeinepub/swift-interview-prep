@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 9,
+  "projectStateVersion": 13,
   "summary": "Swift Interview Prep website: improve UI/UX to be more user-friendly across books, topics, question detail, and saved questions views.",
   "architectural_notes": [],
   "known_issues": [
@@ -119,6 +119,22 @@
         "REQ-14"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-add-a-copy-control-to-all-rendered-code-blocks-so-users-can-copy-the-code-to-their-clipboard-this-must-work-for-code-blocks-shown-in-question-content-and-solution-content-rendered-via-frontend-src-components-prosecontent-tsx-e-g-the-pre-code-code-pre-output-inside-the-html-string-the-control-must-be-keyboard-accessible-have-an-accessible-label-in-english-and-provide-clear-success-failure-feedback-to-the-user",
+      "title": "Add a \"Copy\" control to all rendered code blocks so users can copy the code to their clipboard. This must work for code blocks shown in question content and solution content rendered via `frontend/src/components/ProseContent.tsx` (e.g., the `<pre><code>...</code></pre>` output inside the HTML string). The control must be keyboard-accessible, have an accessible label in English, and provide clear success/failure feedback to the user.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-app-s-design-tokens-so-the-overall-brand-primary-color-theme-changes-from-the-current-purple-blue-palette-to-a-green-based-palette-across-both-light-and-dark-mode-this-includes-updating-the-css-variables-in-frontend-src-index-css-e-g-primary-ring-and-any-other-theme-tokens-currently-using-purple-blue-hues-such-as-chart-colors-and-accents-as-appropriate-and-adjusting-any-utility-classes-that-hardcode-blue-purple-colors-e-g-the-gradient-text-utility-currently-using-to-blue-600-so-the-ui-no-longer-presents-as-purple-blue-and-instead-reads-as-green-themed-while-maintaining-good-contrast-and-readability",
+      "title": "Update the app’s design tokens so the overall brand/primary color theme changes from the current purple/blue palette to a green-based palette across both light and dark mode. This includes updating the CSS variables in `frontend/src/index.css` (e.g., `--primary`, `--ring`, and any other theme tokens currently using purple/blue hues such as chart colors and accents as appropriate), and adjusting any utility classes that hardcode blue/purple colors (e.g., the `.gradient-text` utility currently using `to-blue-600`) so the UI no longer presents as purple/blue and instead reads as green-themed while maintaining good contrast and readability.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -143,6 +159,18 @@
     {
       "id": "AR-4",
       "summary": "Add Light Mode and Dark Mode (theme toggle) for the Swift Interview Prep website/app UI.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add a “Copy” button to code blocks in question detail (and any other code snippets) to let users quickly copy code to clipboard.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Change the website/app visual color theme from the current purple to a green color theme (update primary brand/accent colors accordingly across the UI).",
       "reqIds": [],
       "status": "pending"
     }
